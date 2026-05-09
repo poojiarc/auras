@@ -27,8 +27,11 @@ export function Navbar() {
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "py-2" : "py-4"}`}>
       <div className="mx-auto max-w-7xl px-4">
         <nav className={`flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-300 ${scrolled ? "glass-light shadow-soft" : "glass-light"}`}>
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Aura Interiors" className="h-10 w-auto" />
+          <Link to="/" className="flex items-center gap-2 min-w-0">
+            <img src={logo} alt="Aura Interiors" className="h-12 md:h-14 w-auto shrink-0" />
+            <span className="hidden sm:block font-bold text-[11px] md:text-xs leading-tight tracking-wide text-secondary">
+              AURA INTERIOR<br />HOME SOLUTIONS
+            </span>
           </Link>
           <ul className="hidden md:flex items-center gap-1">
             {links.map(({ to, label, Icon }) => (
