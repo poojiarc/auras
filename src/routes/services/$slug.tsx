@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { getService, services } from "@/lib/services-data";
 import { Reveal } from "@/components/Reveal";
 import { CTA } from "@/components/sections/CTA";
+import { BeforeAfter } from "@/components/BeforeAfter";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -62,6 +63,27 @@ function ServiceDetail() {
             </Reveal>
 
             <Reveal delay={0.1}>
+              <h3 className="mt-12 text-2xl font-bold">Key Features</h3>
+              <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {service.features.map((f: string, i: number) => (
+                  <li key={i} className="flex gap-3 text-muted-foreground">
+                    <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <h3 className="mt-12 text-2xl font-bold">Transformation</h3>
+              <p className="mt-2 text-muted-foreground mb-6">Drag the slider to see the before and after.</p>
+              <BeforeAfter 
+                beforeImage={service.beforeImage || "https://images.unsplash.com/photo-1503174971373-b1f69850bded?q=80&w=2113&auto=format&fit=crop"} 
+                afterImage={service.image} 
+              />
+            </Reveal>
+
+            <Reveal delay={0.2}>
               <h3 className="mt-12 text-2xl font-bold">Inspiration Gallery</h3>
               <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[service, ...services.filter(s => s.slug !== service.slug)].slice(0, 6).map((s, i) => (
@@ -76,9 +98,9 @@ function ServiceDetail() {
 
           <aside className="space-y-6">
             <Reveal>
-              <div className="rounded-2xl border bg-card p-6 shadow-soft">
+              <div className="rounded-2xl border bg-card p-6 shadow-soft sticky top-32">
                 <h3 className="font-semibold text-lg">Key Benefits</h3>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-4 space-y-3 border-b pb-6 mb-6">
                   {service.benefits.map((b: string, i: number) => (
                     <li key={i} className="flex gap-3 text-sm">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
@@ -86,8 +108,11 @@ function ServiceDetail() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact" className="mt-6 block text-center bg-gradient-brand text-primary-foreground px-5 py-3 rounded-xl font-semibold shadow-soft hover:shadow-glow transition-all">
-                  Get a Quote
+                <Link to="/contact" className="w-full inline-flex items-center justify-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-4 rounded-xl font-bold shadow-soft hover:shadow-glow transition-all hover:-translate-y-1">
+                  {service.cta}
+                </Link>
+                <Link to="/services" className="mt-4 w-full inline-flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <ArrowLeft className="h-4 w-4" /> Back to Services
                 </Link>
               </div>
             </Reveal>

@@ -4,7 +4,7 @@ import { services } from "@/lib/services-data";
 import { Reveal } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — Aura Interiors" },

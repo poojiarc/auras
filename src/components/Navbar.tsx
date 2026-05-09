@@ -29,8 +29,8 @@ export function Navbar() {
         <nav className={`flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-300 ${scrolled ? "glass-light shadow-soft" : "glass-light"}`}>
           <Link to="/" className="flex items-center gap-2 min-w-0">
             <img src={logo} alt="Aura Interiors" className="h-12 md:h-14 w-auto shrink-0" />
-            <span className="hidden sm:block font-bold text-[11px] md:text-xs leading-tight tracking-wide text-secondary">
-              AURA INTERIOR<br />HOME SOLUTIONS
+            <span className="hidden sm:block font-bold text-[11px] md:text-xs leading-tight tracking-wide text-secondary uppercase">
+              <span className="text-primary">Aura</span> Home<br />Interiors
             </span>
           </Link>
           <ul className="hidden md:flex items-center gap-1">
@@ -41,7 +41,7 @@ export function Navbar() {
                   activeProps={{ className: "!text-primary !bg-accent" }}
                   activeOptions={{ exact: to === "/" }}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
                   {label}
                 </Link>
               </li>
@@ -63,7 +63,7 @@ export function Navbar() {
                   className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium hover:bg-accent"
                   activeProps={{ className: "!text-primary !bg-accent" }}
                   activeOptions={{ exact: to === "/" }}>
-                  <Icon className="h-4 w-4" /> {label}
+                  <Icon className="h-4 w-4 text-primary" /> {label}
                 </Link>
               ))}
               <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 flex items-center justify-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-3 rounded-xl text-sm font-semibold">

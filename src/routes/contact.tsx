@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { services } from "@/lib/services-data";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -16,11 +17,11 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hi Aura Interiors,%0A%0AName: ${form.name}%0APhone: ${form.phone}%0A%0A${form.message}`;
+    const text = `Hi Aura Interiors,%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AEmail: ${form.email}%0AInterested Service: ${form.service}%0A%0A${form.message}`;
     window.open(`https://wa.me/919542119649?text=${text}`, "_blank");
     setSent(true);
   };
@@ -80,19 +81,38 @@ function ContactPage() {
           <Reveal delay={0.1}>
             <form onSubmit={handleSubmit} className="rounded-2xl bg-card border p-8 shadow-elegant space-y-5">
               <h2 className="text-2xl font-bold">Send a message</h2>
-              <div>
-                <label className="text-sm font-medium">Name</label>
-                <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-                  className="mt-1.5 w-full rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary" />
+              <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label className="text-sm font-medium">Name</label>
+                  <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
+                    className="mt-1.5 w-full rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary" />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Mobile Number</label>
+                  <input required type="tel" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
+                    className="mt-1.5 w-full rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary" />
+                </div>
               </div>
-              <div>
-                <label className="text-sm font-medium">Phone</label>
-                <input required type="tel" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
-                  className="mt-1.5 w-full rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary" />
+              <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label className="text-sm font-medium">Email</label>
+                  <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
+                    className="mt-1.5 w-full rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary" />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Service Interested In</label>
+                  <select required value={form.service} onChange={e => setForm({ ...form, service: e.target.value })}
+                    className="mt-1.5 w-full rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary">
+                    <option value="" disabled>Select a service</option>
+                    {services.map(s => (
+                      <option key={s.slug} value={s.title}>{s.title}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
               <div>
                 <label className="text-sm font-medium">Message</label>
-                <textarea required rows={5} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
+                <textarea required rows={4} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                   className="mt-1.5 w-full rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary resize-none" />
               </div>
               <button type="submit" className="w-full inline-flex items-center justify-center gap-2 bg-gradient-brand text-primary-foreground px-6 py-4 rounded-xl font-semibold shadow-soft hover:shadow-glow transition-all">

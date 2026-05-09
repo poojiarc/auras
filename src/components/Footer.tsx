@@ -11,8 +11,8 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <img src={logo} alt="Aura Interiors" className="h-16 w-auto bg-white rounded-xl p-2" />
-            <span className="font-bold text-sm leading-tight tracking-wide text-white">
-              AURA INTERIOR<br />HOME SOLUTIONS
+            <span className="font-bold text-sm leading-tight tracking-wide text-white uppercase">
+              <span className="text-primary">Aura</span> Home<br />Interiors
             </span>
           </div>
           <p className="mt-4 text-sm text-secondary-foreground/70 leading-relaxed">
@@ -43,7 +43,7 @@ export function Footer() {
             ].map(({ to, label, Icon }) => (
               <li key={to}>
                 <Link to={to} className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <Icon className="h-3.5 w-3.5" /> {label}
+                  <Icon className="h-3.5 w-3.5 text-primary" /> {label}
                 </Link>
               </li>
             ))}
@@ -56,7 +56,7 @@ export function Footer() {
             {services.slice(0, 6).map(s => (
               <li key={s.slug}>
                 <Link to="/services/$slug" params={{ slug: s.slug }} className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <s.Icon className="h-3.5 w-3.5" /> {s.title}
+                  <s.Icon className="h-3.5 w-3.5 text-primary" /> {s.title}
                 </Link>
               </li>
             ))}
@@ -75,7 +75,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 py-5 text-center text-xs text-secondary-foreground/70 md:px-6">
-          <p>© {year} AURA INTERIOR HOME SOLUTIONs. All rights reserved.</p>
+          <p>© {year} AURA HOME INTERIORS. All rights reserved.</p>
           <div className="flex items-center justify-center gap-1">
             Made with <Heart className="inline h-4 w-4 mx-1 fill-red-500 text-red-500" /> by
             <a
