@@ -29,8 +29,8 @@ export function Navbar() {
         <nav className={`flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-300 ${scrolled ? "glass-light shadow-soft" : "glass-light"}`}>
           <Link to="/" className="flex items-center gap-2 min-w-0">
             <img src={logo} alt="Aura Interiors" className="h-12 md:h-14 w-auto shrink-0" />
-            <span className="hidden sm:block font-bold text-[11px] md:text-xs leading-tight tracking-wide text-secondary uppercase">
-              <span className="text-primary">Aura</span> Home<br />Interiors
+            <span className="hidden sm:block font-extrabold text-sm md:text-base tracking-widest text-secondary uppercase whitespace-nowrap font-ranade">
+              <span className="text-primary">Aura</span> Home Interiors
             </span>
           </Link>
           <ul className="hidden md:flex items-center gap-1">

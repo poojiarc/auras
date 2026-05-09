@@ -7,12 +7,12 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-secondary text-secondary-foreground mt-24">
-      <div className="mx-auto max-w-7xl px-4 py-16 grid gap-12 md:grid-cols-4">
-        <div>
+      <div className="mx-auto max-w-7xl px-4 py-16 grid gap-12 md:grid-cols-5">
+        <div className="md:col-span-2 pr-8">
           <div className="flex items-center gap-3">
             <img src={logo} alt="Aura Interiors" className="h-16 w-auto bg-white rounded-xl p-2" />
-            <span className="font-bold text-sm leading-tight tracking-wide text-white uppercase">
-              <span className="text-primary">Aura</span> Home<br />Interiors
+            <span className="font-extrabold text-sm tracking-widest text-white uppercase whitespace-nowrap font-ranade">
+              <span className="text-primary">Aura</span> Home Interiors
             </span>
           </div>
           <p className="mt-4 text-sm text-secondary-foreground/70 leading-relaxed">
