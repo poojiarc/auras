@@ -26,7 +26,7 @@ export function Hero() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] text-balance"
           >
             Designing Dream Homes with{" "}
-            <span className="bg-gradient-brand bg-clip-text text-transparent">Precision & Style</span>
+            <span className="text-gradient-brand">Precision & Style</span>
           </motion.h1>
 
           <motion.p
@@ -74,7 +74,7 @@ export function Hero() {
               <motion.div key={i}
                 initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 + i * 0.1 }}
                 className="glass rounded-2xl p-6 text-white">
-                <div className="text-4xl font-bold bg-gradient-brand bg-clip-text text-transparent">{s.k}</div>
+                <div className="text-4xl font-bold text-gradient-brand">{s.k}</div>
                 <div className="text-sm text-white/70 mt-1">{s.v}</div>
               </motion.div>
             ))}
