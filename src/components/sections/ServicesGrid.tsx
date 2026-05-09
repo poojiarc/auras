@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import { services } from "@/lib/services-data";

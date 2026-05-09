@@ -1,21 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { services } from "@/lib/services-data";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Aura Interiors" },
-      { name: "description", content: "Get in touch with Aura Interiors in Jadcherla, Telangana. Call +91 95421 19649 or email auraInteriors.ind@gmail.com" },
-    ],
-  }),
-  component: ContactPage,
-});
-
-function ContactPage() {
+export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "" });
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
 import hero from "@/assets/hero-interior.jpg";
 

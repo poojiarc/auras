@@ -1,18 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ProjectsGallery } from "@/components/sections/ProjectsGallery";
+import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
+import { CTA } from "@/components/sections/CTA";
+import p1 from "@/assets/hero-interior.jpg"; // Placeholder
+import { ProjectsGallery } from "@/components/sections/ProjectsGallery";
 
-export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Projects — Aura Interiors" },
-      { name: "description", content: "Real interior design projects delivered by Aura Interiors across Telangana." },
-    ],
-  }),
-  component: ProjectsPage,
-});
-
-function ProjectsPage() {
+export default function ProjectsPage() {
   return (
     <>
       <section className="pt-36 pb-12 bg-gradient-hero text-white">

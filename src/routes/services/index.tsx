@@ -1,20 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { services } from "@/lib/services-data";
 import { Reveal } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
 
-export const Route = createFileRoute("/services/")({
-  head: () => ({
-    meta: [
-      { title: "Services — Aura Interiors" },
-      { name: "description", content: "Modular kitchens, wardrobes, TV units, false ceilings, pooja units & more home interior services." },
-    ],
-  }),
-  component: ServicesPage,
-});
-
-function ServicesPage() {
+export default function ServicesPage() {
   return (
     <>
       <section className="pt-36 pb-12 bg-gradient-hero text-white">
@@ -36,7 +26,7 @@ function ServicesPage() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: (i % 3) * 0.1 }}
             >
-              <Link to="/services/$slug" params={{ slug: s.slug }}
+              <Link to={`/services/${s.slug}`}
                 className="group block rounded-2xl overflow-hidden bg-card border shadow-soft hover:shadow-elegant hover:-translate-y-1 transition-all">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img src={s.image} alt={s.title} loading="lazy"

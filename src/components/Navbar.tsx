@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, Wrench, Image as ImageIcon, User, Phone, Menu, X } from "lucide-react";
@@ -36,14 +36,18 @@ export function Navbar() {
           <ul className="hidden md:flex items-center gap-1">
             {links.map(({ to, label, Icon }) => (
               <li key={to}>
-                <Link to={to}
-                  className="group flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent transition-colors"
-                  activeProps={{ className: "!text-primary !bg-accent" }}
-                  activeOptions={{ exact: to === "/" }}
+                <NavLink to={to}
+                  className={({ isActive }) => 
+                    `group flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                      isActive 
+                        ? "text-primary bg-accent" 
+                        : "text-foreground/80 hover:text-foreground hover:bg-accent"
+                    }`
+                  }
                 >
                   <Icon className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
                   {label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -59,12 +63,17 @@ export function Navbar() {
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
               className="md:hidden mt-2 glass-light rounded-2xl p-3 shadow-soft">
               {links.map(({ to, label, Icon }) => (
-                <Link key={to} to={to} onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium hover:bg-accent"
-                  activeProps={{ className: "!text-primary !bg-accent" }}
-                  activeOptions={{ exact: to === "/" }}>
+                <NavLink key={to} to={to} onClick={() => setOpen(false)}
+                  className={({ isActive }) => 
+                    `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium ${
+                      isActive 
+                        ? "text-primary bg-accent" 
+                        : "hover:bg-accent"
+                    }`
+                  }
+                >
                   <Icon className="h-4 w-4 text-primary" /> {label}
-                </Link>
+                </NavLink>
               ))}
               <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 flex items-center justify-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-3 rounded-xl text-sm font-semibold">
                 Book Free Consultation

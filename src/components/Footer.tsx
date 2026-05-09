@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Heart, Home, Wrench, Image as ImageIcon, User } from "lucide-react";
 import logo from "@/assets/aura-logo.png";
 import { services } from "@/lib/services-data";
@@ -55,7 +55,7 @@ export function Footer() {
           <ul className="space-y-2.5 text-sm text-secondary-foreground/70">
             {services.slice(0, 6).map(s => (
               <li key={s.slug}>
-                <Link to="/services/$slug" params={{ slug: s.slug }} className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Link to={`/services/${s.slug}`} className="flex items-center gap-2 hover:text-primary transition-colors">
                   <s.Icon className="h-3.5 w-3.5 text-primary" /> {s.title}
                 </Link>
               </li>

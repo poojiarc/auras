@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { getService, services } from "@/lib/services-data";
@@ -6,31 +6,14 @@ import { Reveal } from "@/components/Reveal";
 import { CTA } from "@/components/sections/CTA";
 import { BeforeAfter } from "@/components/BeforeAfter";
 
-export const Route = createFileRoute("/services/$slug")({
-  loader: ({ params }) => {
-    const service = getService(params.slug);
-    if (!service) throw notFound();
-    return { service };
-  },
-  head: ({ loaderData }) => ({
-    meta: loaderData ? [
-      { title: `${loaderData.service.title} — Aura Interiors` },
-      { name: "description", content: loaderData.service.short },
-      { property: "og:image", content: loaderData.service.image },
-    ] : [],
-  }),
-  notFoundComponent: () => (
-    <div className="pt-36 pb-20 text-center">
-      <h1 className="text-3xl font-bold">Service not found</h1>
-      <Link to="/services" className="mt-4 inline-block text-primary">← Back to Services</Link>
-    </div>
-  ),
-  errorComponent: ({ error }) => <div className="pt-36 text-center">{error.message}</div>,
-  component: ServiceDetail,
-});
+export default function ServiceDetail() {
+  const { slug } = useParams();
+  const service = getService(slug || "");
 
-function ServiceDetail() {
-  const { service } = Route.useLoaderData();
+  if (!service) {
+    return <Navigate to="/services" replace />;
+  }
+
   const others = services.filter(s => s.slug !== service.slug).slice(0, 4);
 
   return (
@@ -123,7 +106,7 @@ function ServiceDetail() {
                 <ul className="mt-4 space-y-2">
                   {others.map(o => (
                     <li key={o.slug}>
-                      <Link to="/services/$slug" params={{ slug: o.slug }}
+                      <Link to={`/services/${o.slug}`}
                         className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent text-sm">
                         <o.Icon className="h-4 w-4 text-primary" /> {o.title}
                       </Link>

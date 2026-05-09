@@ -1,19 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { About } from "@/components/sections/About";
 import { CTA } from "@/components/sections/CTA";
 import { Reveal } from "@/components/Reveal";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Aura Interiors" },
-      { name: "description", content: "Learn about Aura Interiors, a premium home interior solutions company in Jadcherla, Telangana." },
-    ],
-  }),
-  component: AboutPage,
-});
-
-function AboutPage() {
+export default function AboutPage() {
   return (
     <>
       <section className="pt-36 pb-12 bg-gradient-hero text-white">
