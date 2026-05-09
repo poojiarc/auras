@@ -79,7 +79,7 @@ function ServiceDetail() {
               <div className="rounded-2xl border bg-card p-6 shadow-soft">
                 <h3 className="font-semibold text-lg">Key Benefits</h3>
                 <ul className="mt-4 space-y-3">
-                  {service.benefits.map((b, i) => (
+                  {service.benefits.map((b: string, i: number) => (
                     <li key={i} className="flex gap-3 text-sm">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                       <span>{b}</span>
