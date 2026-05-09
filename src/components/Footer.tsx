@@ -9,7 +9,12 @@ export function Footer() {
     <footer className="bg-secondary text-secondary-foreground mt-24">
       <div className="mx-auto max-w-7xl px-4 py-16 grid gap-12 md:grid-cols-4">
         <div>
-          <img src={logo} alt="Aura Interiors" className="h-14 w-auto bg-white rounded-xl p-2" />
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Aura Interiors" className="h-16 w-auto bg-white rounded-xl p-2" />
+            <span className="font-bold text-sm leading-tight tracking-wide text-white">
+              AURA INTERIOR<br />HOME SOLUTIONS
+            </span>
+          </div>
           <p className="mt-4 text-sm text-secondary-foreground/70 leading-relaxed">
             Premium home interior solutions in Jadcherla, Telangana. Crafting elegant, functional spaces with modular kitchens, wardrobes & turnkey designs.
           </p>
@@ -69,12 +74,24 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-secondary-foreground/60">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 py-5 text-center text-xs text-secondary-foreground/70 md:px-6">
           <p>© {year} AURA INTERIOR HOME SOLUTIONs. All rights reserved.</p>
-          <p className="flex items-center gap-1.5">
-            Made with <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> by{" "}
-            <a href="#" className="text-primary font-semibold hover:underline">StaffArc</a>
-          </p>
+          <div className="flex items-center justify-center gap-1">
+            Made with <Heart className="inline h-4 w-4 mx-1 fill-red-500 text-red-500" /> by
+            <a
+              href="https://staffarc.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-primary hover:underline ml-1"
+            >
+              <img
+                src="https://www.staffarc.in/images/Staffarc-logo.png"
+                alt="StaffArc logo"
+                className="h-5 w-5 object-contain"
+              />
+              StaffArc
+            </a>
+          </div>
         </div>
       </div>
     </footer>
