@@ -62,12 +62,12 @@ function ServiceDetail() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h3 className="mt-12 text-2xl font-bold">Gallery</h3>
+              <h3 className="mt-12 text-2xl font-bold">Inspiration Gallery</h3>
               <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-                {[service.image, service.image, service.image, service.image, service.image, service.image].map((img, i) => (
+                {[service, ...services.filter(s => s.slug !== service.slug)].slice(0, 6).map((s, i) => (
                   <motion.div key={i} whileHover={{ scale: 1.03 }}
                     className="aspect-square rounded-2xl overflow-hidden shadow-soft">
-                    <img src={img} alt="" loading="lazy" className="h-full w-full object-cover hover:scale-110 transition-transform duration-700" />
+                    <img src={s.image} alt={s.title} loading="lazy" className="h-full w-full object-cover hover:scale-110 transition-transform duration-700" />
                   </motion.div>
                 ))}
               </div>
