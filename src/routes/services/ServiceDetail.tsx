@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, Check, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { getService, services } from "@/lib/services-data";
 import { Reveal } from "@/components/Reveal";
@@ -17,98 +17,114 @@ export default function ServiceDetail() {
   const others = services.filter(s => s.slug !== service.slug).slice(0, 4);
 
   return (
-    <>
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img src={service.image} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 to-secondary/60" />
+    <div className="bg-black pt-20">
+      <section className="relative h-[65vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={service.image} alt={service.title} className="h-full w-full object-cover scale-105 transform motion-safe:animate-slow-zoom" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90" />
         </div>
-        <div className="mx-auto max-w-7xl px-4 text-white">
-          <Link to="/services" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
-            <ArrowLeft className="h-4 w-4" /> Back to Services
+        
+        <div className="mx-auto max-w-7xl px-4 relative z-10 w-full">
+          <Link to="/services" className="inline-flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.3em] hover:text-white transition-all mb-10 group">
+            <ArrowLeft className="h-4 w-4 group-hover:-translate-x-2 transition-transform" /> Back to Collections
           </Link>
           <Reveal>
-            <div className="mt-6 inline-flex items-center gap-3 glass rounded-full px-4 py-2 text-xs font-medium">
-              <service.Icon className="h-4 w-4 text-primary" /> Service
+            <div className="inline-flex items-center gap-4 bg-primary/10 border border-primary/30 rounded-2xl px-6 py-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-8 backdrop-blur-md">
+              <service.Icon className="h-5 w-5" /> Signature Experience
             </div>
-            <h1 className="mt-4 text-5xl md:text-6xl font-bold max-w-3xl text-balance">{service.title}</h1>
-            <p className="mt-4 text-lg text-white/75 max-w-2xl">{service.short}</p>
+            <h1 className="text-5xl md:text-8xl font-serif text-white max-w-4xl mb-8 leading-tight">{service.title}</h1>
+            <p className="text-xl md:text-2xl text-white/70 max-w-3xl font-light leading-relaxed">{service.short}</p>
           </Reveal>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
+      <section className="py-32">
+        <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-12 gap-20">
+          <div className="lg:col-span-8">
             <Reveal>
-              <h2 className="text-3xl font-bold">About this service</h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed text-lg">{service.description}</p>
+              <h2 className="text-3xl font-serif text-white mb-10 inline-block relative">
+                The Vision
+                <div className="absolute -bottom-4 left-0 h-1 w-20 bg-primary rounded-full shadow-glow" />
+              </h2>
+              <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light mb-12">{service.description}</p>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h3 className="mt-12 text-2xl font-bold">Key Features</h3>
-              <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <h3 className="mt-20 text-2xl font-serif text-white mb-10 tracking-wide">Exclusive Craftsmanship</h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {service.features.map((f: string, i: number) => (
-                  <li key={i} className="flex gap-3 text-muted-foreground">
-                    <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                    <span>{f}</span>
+                  <li key={i} className="flex gap-6 p-8 glass rounded-[2.5rem] border border-white/5 hover:border-primary/30 transition-all duration-500 group">
+                    <div className="h-8 w-8 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all">
+                      <Check className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="text-white/70 font-medium leading-relaxed">{f}</span>
                   </li>
                 ))}
               </ul>
             </Reveal>
 
             <Reveal delay={0.15}>
-              <h3 className="mt-12 text-2xl font-bold">Transformation</h3>
-              <p className="mt-2 text-muted-foreground mb-6">Drag the slider to see the before and after.</p>
-              <BeforeAfter 
-                beforeImage={service.beforeImage || "https://images.unsplash.com/photo-1503174971373-b1f69850bded?q=80&w=2113&auto=format&fit=crop"} 
-                afterImage={service.image} 
-              />
+              <h3 className="mt-24 text-3xl font-serif text-white mb-6 italic">The Transformation</h3>
+              <p className="text-white/40 mb-10 font-medium tracking-[0.2em] uppercase text-[10px]">Interact with our precision delivery process.</p>
+              <div className="rounded-[3.5rem] overflow-hidden border border-primary/20 shadow-premium group">
+                <BeforeAfter 
+                  beforeImage={service.beforeImage || "https://images.unsplash.com/photo-1503174971373-b1f69850bded?q=80&w=2113&auto=format&fit=crop"} 
+                  afterImage={service.image} 
+                />
+              </div>
             </Reveal>
 
             <Reveal delay={0.2}>
-              <h3 className="mt-12 text-2xl font-bold">Inspiration Gallery</h3>
-              <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
+              <h3 className="mt-24 text-2xl font-serif text-white mb-10">Design Portfolio</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {[service, ...services.filter(s => s.slug !== service.slug)].slice(0, 6).map((s, i) => (
-                  <motion.div key={i} whileHover={{ scale: 1.03 }}
-                    className="aspect-square rounded-2xl overflow-hidden shadow-soft">
-                    <img src={s.image} alt={s.title} loading="lazy" className="h-full w-full object-cover hover:scale-110 transition-transform duration-700" />
+                  <motion.div key={i} whileHover={{ scale: 0.98, rotate: i % 2 === 0 ? 1 : -1 }}
+                    className="aspect-square rounded-[2rem] overflow-hidden shadow-premium group border border-white/5 relative">
+                    <img src={s.image} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                       <span className="text-white text-[10px] font-bold uppercase tracking-widest text-center">{s.title}</span>
+                    </div>
                   </motion.div>
                 ))}
               </div>
             </Reveal>
           </div>
 
-          <aside className="space-y-6">
+          <aside className="lg:col-span-4 space-y-10">
             <Reveal>
-              <div className="rounded-2xl border bg-card p-6 shadow-soft sticky top-32">
-                <h3 className="font-semibold text-lg">Key Benefits</h3>
-                <ul className="mt-4 space-y-3 border-b pb-6 mb-6">
+              <div className="glass p-10 md:p-12 rounded-[3.5rem] border border-primary/20 shadow-premium sticky top-32 overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-primary/30" />
+                <h3 className="font-serif text-2xl text-white mb-8">Premium Benefits</h3>
+                <ul className="space-y-6 mb-12">
                   {service.benefits.map((b: string, i: number) => (
-                    <li key={i} className="flex gap-3 text-sm">
-                      <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span>{b}</span>
+                    <li key={i} className="flex gap-5 text-sm font-medium text-white/60 group">
+                      <Sparkles className="h-5 w-5 text-primary shrink-0 mt-0.5 group-hover:rotate-12 transition-transform" />
+                      <span className="leading-relaxed">{b}</span>
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact" className="w-full inline-flex items-center justify-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-4 rounded-xl font-bold shadow-soft hover:shadow-glow transition-all hover:-translate-y-1">
+                <Link to="/contact" className="w-full btn-brand py-6 rounded-2xl font-bold shadow-glow flex items-center justify-center gap-3 group">
                   {service.cta}
                 </Link>
-                <Link to="/services" className="mt-4 w-full inline-flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                  <ArrowLeft className="h-4 w-4" /> Back to Services
+                <Link to="/services" className="mt-10 w-full flex items-center justify-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/40 hover:text-primary transition-all">
+                  <ArrowLeft className="h-4 w-4" /> View All Collections
                 </Link>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="rounded-2xl border bg-card p-6 shadow-soft">
-                <h3 className="font-semibold">Other Services</h3>
-                <ul className="mt-4 space-y-2">
+              <div className="glass p-10 rounded-[3rem] border border-white/5">
+                <h3 className="font-serif text-xl text-white mb-8 tracking-wide">Related Expertise</h3>
+                <ul className="space-y-6">
                   {others.map(o => (
                     <li key={o.slug}>
                       <Link to={`/services/${o.slug}`}
-                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent text-sm">
-                        <o.Icon className="h-4 w-4 text-primary" /> {o.title}
+                        className="flex items-center gap-5 p-4 rounded-3xl hover:bg-primary/5 transition-all duration-300 group border border-transparent hover:border-primary/20">
+                        <div className="h-12 w-12 rounded-[1rem] bg-white/5 flex items-center justify-center text-white group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                          <o.Icon className="h-6 w-6" />
+                        </div>
+                        <span className="text-sm font-bold text-white/50 group-hover:text-white transition-colors uppercase tracking-widest leading-none">{o.title}</span>
                       </Link>
                     </li>
                   ))}
@@ -120,6 +136,8 @@ export default function ServiceDetail() {
       </section>
 
       <CTA />
-    </>
+    </div>
   );
 }
+
+

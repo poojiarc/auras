@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function WhatsAppButton() {
   return (
@@ -6,16 +7,31 @@ export function WhatsAppButton() {
       href="https://wa.me/919542119649"
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1, type: "spring" }}
-      whileHover={{ scale: 1.1 }}
-      className="fixed bottom-6 right-6 z-40 h-14 w-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-elegant hover:shadow-glow"
-      aria-label="WhatsApp"
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ delay: 1.5, type: "spring", damping: 20 }}
+      className="fixed bottom-6 right-6 z-50 flex items-center group"
     >
-      <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
-        <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.413c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414z" />
-      </svg>
+      <div className="relative flex items-center">
+        {/* Label with Black Radiant Green Gradient */}
+        <div className="mr-4 px-6 py-3 rounded-full bg-gradient-to-r from-black via-[#0F0F0F] to-[#1A330E] border border-primary/30 text-white text-[11px] font-black tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 whitespace-nowrap shadow-[0_0_30px_rgba(141,198,63,0.2)] backdrop-blur-xl">
+          Free Consultation
+        </div>
+        
+        {/* Button */}
+        <div className="relative">
+           <div className="absolute inset-0 bg-[#25D366] blur-2xl opacity-30 group-hover:opacity-60 transition-opacity animate-pulse" />
+           <div className="h-14 w-14 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-[0_0_30px_rgba(37,211,102,0.4)] group-hover:scale-110 group-hover:rotate-[10deg] transition-all duration-500 relative overflow-hidden border-2 border-white/20">
+             <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+             <WhatsAppIcon className="h-7 w-7 relative z-10 drop-shadow-md" />
+           </div>
+        </div>
+      </div>
     </motion.a>
   );
 }
+
+
+
+
+

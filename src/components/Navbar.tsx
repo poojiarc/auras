@@ -1,8 +1,8 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, Wrench, Image as ImageIcon, User, Phone, Menu, X } from "lucide-react";
-import logo from "@/assets/aura-logo.png";
+import logo from "@/assets/aura-logo.jpg";
 
 const links = [
   { to: "/", label: "Home", Icon: Home },
@@ -24,63 +24,123 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "py-2" : "py-4"}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "py-2" : "py-4"}`}>
       <div className="mx-auto max-w-7xl px-4">
-        <nav className={`flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-300 ${scrolled ? "glass-light shadow-soft" : "glass-light"}`}>
-          <Link to="/" className="flex items-center gap-2 min-w-0">
-            <img src={logo} alt="Aura Interiors" className="h-12 md:h-14 w-auto shrink-0" />
-            <span className="hidden sm:block font-extrabold text-sm md:text-base tracking-widest text-secondary uppercase whitespace-nowrap font-ranade">
-              <span className="text-primary">Aura</span> Home Interiors
-            </span>
+
+        <nav className={`flex items-center justify-between rounded-full px-6 transition-all duration-500 ${scrolled
+            ? "py-2 bg-[#0A0A0A]/90 backdrop-blur-xl border border-primary/20 shadow-[0_0_30px_rgba(141,198,63,0.15)]"
+            : "py-3 bg-black/40 backdrop-blur-md border border-white/10"
+          }`}>
+
+          {/* LOGO */}
+          <Link to="/" className="flex items-center gap-4 group">
+            <img
+              src={logo}
+              alt="Aura Interiors"
+              className="h-12 md:h-16 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+            />
+
+            <div className="flex flex-col leading-tight">
+              <span className="font-heading text-2xl md:text-3xl text-white uppercase tracking-tight">
+                Aura <span className="text-brand italic font-light">Interiors</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.5em] text-white/50 font-black mt-1 font-accent">
+                Timeless Luxury
+              </span>
+            </div>
           </Link>
-          <ul className="hidden md:flex items-center gap-1">
-            {links.map(({ to, label, Icon }) => (
+
+          {/* DESKTOP MENU */}
+          <ul className="hidden lg:flex items-center gap-8">
+            {links.map(({ to, label }) => (
               <li key={to}>
-                <NavLink to={to}
-                  className={({ isActive }) => 
-                    `group flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-                      isActive 
-                        ? "text-primary bg-accent" 
-                        : "text-foreground/80 hover:text-foreground hover:bg-accent"
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    `relative text-[12px] font-accent uppercase tracking-[0.2em] transition-all duration-300 ${isActive
+                      ? "text-primary"
+                      : "text-white/70 hover:text-primary"
                     }`
                   }
                 >
-                  <Icon className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
-                  {label}
+                  {({ isActive }) => (
+                    <>
+                      {label}
+                      {isActive && (
+                        <motion.div
+                          layoutId="nav-underline"
+                          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary"
+                        />
+                      )}
+                    </>
+                  )}
                 </NavLink>
               </li>
             ))}
           </ul>
-          <Link to="/contact" className="hidden md:inline-flex items-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-2.5 rounded-xl text-sm font-semibold shadow-soft hover:shadow-glow transition-all hover:-translate-y-0.5">
-            Book Free Consultation
-          </Link>
-          <button onClick={() => setOpen(v => !v)} className="md:hidden p-2 rounded-lg hover:bg-accent" aria-label="Menu">
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+
+          {/* CTA */}
+          <div className="hidden md:flex items-center">
+            <Link
+              to="/contact"
+              className="btn-brand px-8 py-4 rounded-full text-[13px] font-black shadow-glow"
+            >
+              Get Free Consultation
+            </Link>
+          </div>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            onClick={() => setOpen(v => !v)}
+            className="lg:hidden p-2 text-white hover:text-primary transition"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </nav>
+
+        {/* MOBILE MENU */}
         <AnimatePresence>
           {open && (
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-              className="md:hidden mt-2 glass-light rounded-2xl p-3 shadow-soft">
-              {links.map(({ to, label, Icon }) => (
-                <NavLink key={to} to={to} onClick={() => setOpen(false)}
-                  className={({ isActive }) => 
-                    `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium ${
-                      isActive 
-                        ? "text-primary bg-accent" 
-                        : "hover:bg-accent"
-                    }`
-                  }
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="lg:hidden mt-4 bg-[#0A0A0A] rounded-3xl p-6 border border-primary/20 shadow-xl"
+            >
+              <div className="flex flex-col gap-4">
+
+                {links.map(({ to, label, Icon }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `flex items-center gap-4 px-4 py-3 rounded-xl transition ${isActive
+                        ? "bg-primary text-black"
+                        : "text-white/70 hover:bg-white/10"
+                      }`
+                    }
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="font-accent uppercase tracking-wider text-sm">
+                      {label}
+                    </span>
+                  </NavLink>
+                ))}
+
+                <Link
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className="mt-4 text-center py-3 rounded-xl btn-brand text-sm"
                 >
-                  <Icon className="h-4 w-4 text-primary" /> {label}
-                </NavLink>
-              ))}
-              <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 flex items-center justify-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-3 rounded-xl text-sm font-semibold">
-                Book Free Consultation
-              </Link>
+                  Book Free Consultation
+                </Link>
+
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
     </header>
   );

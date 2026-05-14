@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { WhyAura } from "@/components/sections/WhyAura";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { ProjectsGallery } from "@/components/sections/ProjectsGallery";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -11,6 +12,7 @@ export default function Index() {
     <>
       <Hero />
       <About />
+      <WhyAura />
       <ServicesGrid />
       <ProjectsGallery />
       <Testimonials />

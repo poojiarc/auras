@@ -1,7 +1,19 @@
 import {
-  ChefHat, Shirt, Utensils, Baby, Tv, BookOpen,
-  Lightbulb, Layers, Flame, Wallpaper, Paintbrush, Bath,
-  Armchair, Home, Monitor,
+  CookingPot,
+  DoorOpen,
+  Tv,
+  BedDouble,
+  UtensilsCrossed,
+  BookOpen,
+  Lightbulb,
+  Layers,
+  Landmark,
+  PaintRoller,
+  Paintbrush,
+  Bath,
+  Sofa,
+  Home,
+  Monitor,
   type LucideIcon,
 } from "lucide-react";
 import kitchen from "@/assets/service-kitchen.jpg";
@@ -36,8 +48,8 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "modular-kitchen",
-    title: "Modern Modular Kitchen Designs",
-    Icon: ChefHat,
+    title: "Modular Kitchen",
+    Icon: CookingPot,
     image: kitchen,
     short: "Smart, ergonomic kitchens crafted for modern Indian homes.",
     description: "At Aura Interiors, we design modular kitchens that combine functionality, elegance, and smart space utilization. Our kitchens are crafted to suit modern lifestyles with durable materials and ergonomic layouts.",
@@ -57,8 +69,8 @@ export const services: Service[] = [
   },
   {
     slug: "wardrobes",
-    title: "Custom Wardrobe Solutions",
-    Icon: Shirt,
+    title: "Wardrobes",
+    Icon: DoorOpen,
     image: wardrobe,
     short: "Sliding, hinged, and walk-in wardrobes tailored to your space.",
     description: "We create stylish and spacious wardrobes tailored to your bedroom needs, ensuring perfect organization and aesthetic appeal.",
@@ -76,7 +88,7 @@ export const services: Service[] = [
   },
   {
     slug: "tv-units",
-    title: "Elegant TV Units & Storage Solutions",
+    title: "TV Units",
     Icon: Tv,
     image: tv,
     short: "Statement entertainment walls that anchor your living room.",
@@ -94,8 +106,8 @@ export const services: Service[] = [
   },
   {
     slug: "kids-bedroom",
-    title: "Creative Kids Bedroom Interiors",
-    Icon: Baby,
+    title: "Kids Bedroom",
+    Icon: BedDouble,
     image: kids,
     short: "Fun, safe, and vibrant bedroom designs customized for children.",
     description: "Fun, safe, and vibrant bedroom designs customized for children.",
@@ -112,8 +124,8 @@ export const services: Service[] = [
   },
   {
     slug: "crockery-units",
-    title: "Designer Crockery Units",
-    Icon: Utensils,
+    title: "Crockery Units",
+    Icon: UtensilsCrossed,
     image: crockery,
     short: "Display and store your dining essentials with elegant crockery units.",
     description: "Display and store your dining essentials with elegant crockery units.",
@@ -130,7 +142,7 @@ export const services: Service[] = [
   },
   {
     slug: "study-tables",
-    title: "Modern Study & Work Tables",
+    title: "Study Tables",
     Icon: BookOpen,
     image: study,
     short: "Perfect study tables designed for productivity and comfort.",
@@ -148,7 +160,7 @@ export const services: Service[] = [
   },
   {
     slug: "lighting-solutions",
-    title: "Stylish Lighting Designs",
+    title: "Lighting",
     Icon: Lightbulb,
     image: lights,
     short: "Transform your home ambiance with modern lighting solutions.",
@@ -166,7 +178,7 @@ export const services: Service[] = [
   },
   {
     slug: "false-ceiling",
-    title: "Modern False Ceiling Designs",
+    title: "False Ceiling",
     Icon: Layers,
     image: ceiling,
     short: "Add depth and elegance to your interiors with stylish ceiling designs.",
@@ -184,8 +196,8 @@ export const services: Service[] = [
   },
   {
     slug: "pooja-units",
-    title: "Elegant Pooja Unit Designs",
-    Icon: Flame,
+    title: "Pooja Units",
+    Icon: Landmark,
     image: pooja,
     short: "Create a peaceful spiritual space with beautifully designed pooja units.",
     description: "Create a peaceful spiritual space with beautifully designed pooja units.",
@@ -202,8 +214,8 @@ export const services: Service[] = [
   },
   {
     slug: "wallpaper",
-    title: "Premium Wallpaper Designs",
-    Icon: Wallpaper,
+    title: "Wallpaper",
+    Icon: PaintRoller,
     image: wallpaper,
     short: "Upgrade your walls instantly with stylish wallpapers.",
     description: "Upgrade your walls instantly with stylish wallpapers.",
@@ -220,7 +232,7 @@ export const services: Service[] = [
   },
   {
     slug: "wall-paint",
-    title: "Professional Wall Painting Services",
+    title: "Wall Paint",
     Icon: Paintbrush,
     image: paint,
     short: "We provide high-quality painting solutions for a flawless finish.",
@@ -238,7 +250,7 @@ export const services: Service[] = [
   },
   {
     slug: "bathroom-interiors",
-    title: "Modern Bathroom Designs",
+    title: "Bathroom",
     Icon: Bath,
     image: bathroom,
     short: "Upgrade your bathroom with smart, stylish, and functional designs.",
@@ -256,8 +268,8 @@ export const services: Service[] = [
   },
   {
     slug: "custom-furniture",
-    title: "Customized Furniture Solutions",
-    Icon: Armchair,
+    title: "Furniture",
+    Icon: Sofa,
     image: furniture,
     short: "We design furniture tailored to your space, needs, and style.",
     description: "We design furniture tailored to your space, needs, and style.",
@@ -274,7 +286,7 @@ export const services: Service[] = [
   },
   {
     slug: "complete-home-interiors",
-    title: "Complete Home Interior Solutions",
+    title: "Home Interiors",
     Icon: Home,
     image: completeHome,
     short: "From design to execution, we handle everything for your dream home.",
@@ -292,7 +304,7 @@ export const services: Service[] = [
   },
   {
     slug: "3d-design",
-    title: "3D Interior Design & Visualization",
+    title: "3D Design",
     Icon: Monitor,
     image: design3d,
     short: "Visualize your home before execution with realistic 3D designs.",
