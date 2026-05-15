@@ -2,6 +2,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 // Pages
 import IndexPage from "@/routes/index";
@@ -14,6 +15,7 @@ import ServiceDetailPage from "@/routes/services/ServiceDetail";
 function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-1">
         <Outlet />
